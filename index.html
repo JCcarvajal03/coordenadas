@@ -1,0 +1,114 @@
+<index.html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Coordenadas</title>
+    <style>
+        body {
+            font-family: Bernard, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #000; /* Fondo negro */
+            color: #fffefe; /* Texto blanco */
+        }
+        .container {
+            max-width: 400px;
+            margin: 40px auto; /* Márgenes superior e inferior de 40px */
+            padding: 20px;
+            border: 1px solid #cecaca; /* Borde para delimitar el área del programa */
+            border-radius: 10px; /* Bordes redondeados */
+            background-color: #0f0f0f; /* Fondo más oscuro para el contenedor */
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: #333; /* Fondo oscuro para los inputs */
+            color: #fff; /* Texto blanco */
+            border: 1px solid #555; /* Borde gris oscuro */
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #fa0505;
+            color: rgb(245, 244, 245);
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #f70000;
+        }
+        h2, h3 {
+            text-align: center;
+            color: #fff;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Convertidor de Coordenadas</h2>
+
+    <h3>Polares a Cartesianas</h3>
+    <label for="r">r (radio):</label>
+    <input type="number" id="r" step="any">
+    
+    <label for="theta">θ (ángulo en grados):</label>
+    <input type="number" id="theta" step="any">
+    
+    <button onclick="polarToCartesian()">Convertir a Cartesianas</button>
+    
+    <p id="cartesian-result"></p>
+
+    <h3>Cartesianas a Polares</h3>
+    <label for="x">x (coordenada x):</label>
+    <input type="number" id="x" step="any">
+    
+    <label for="y">y (coordenada y):</label>
+    <input type="number" id="y" step="any">
+    
+    <button onclick="cartesianToPolar()">Convertir a Polares</button>
+    
+    <p id="polar-result"></p>
+</div>
+
+<div class="footer">
+    <p>Desarrollado por Carvajal JJ</p>
+</div>
+
+<script>
+    function polarToCartesian() {
+        let r = parseFloat(document.getElementById('r').value);
+        let theta = parseFloat(document.getElementById('theta').value);
+        
+        let thetaRad = theta * Math.PI / 180; // Convertir grados a radianes
+        let x = r * Math.cos(thetaRad);
+        let y = r * Math.sin(thetaRad);
+        
+        document.getElementById('cartesian-result').innerText = 
+            `Coordenadas Cartesianas: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}`;
+    }
+
+    function cartesianToPolar() {
+        let x = parseFloat(document.getElementById('x').value);
+        let y = parseFloat(document.getElementById('y').value);
+        
+        let r = Math.sqrt(x*x + y*y);
+        let theta = Math.atan2(y, x) * 180 / Math.PI; // Convertir radianes a grados
+        
+        document.getElementById('polar-result').innerText = 
+            `Coordenadas Polares: r = ${r.toFixed(2)}, θ = ${theta.toFixed(2)}°`;
+    }
+</script>
+
+</body>
+</html>
