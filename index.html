@@ -1,4 +1,4 @@
-<index.html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,40 +6,40 @@
     <title>Convertidor de Coordenadas</title>
     <style>
         body {
-            font-family: Bernard, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             background-color: #000; /* Fondo negro */
-            color: #fffefe; /* Texto blanco */
+            color: #fff; /* Texto blanco */
         }
         .container {
             max-width: 400px;
-            margin: 40px auto; /* Márgenes superior e inferior de 40px */
+            margin: 40px auto;
             padding: 20px;
-            border: 1px solid #cecaca; /* Borde para delimitar el área del programa */
-            border-radius: 10px; /* Bordes redondeados */
-            background-color: #0f0f0f; /* Fondo más oscuro para el contenedor */
+            border: 1px solid #444;
+            border-radius: 10px;
+            background-color: rgba(34, 34, 34, 0.9); /* Fondo oscuro semitransparente */
         }
         input[type="number"] {
             width: 100%;
             padding: 8px;
             margin: 8px 0;
             box-sizing: border-box;
-            background-color: #333; /* Fondo oscuro para los inputs */
-            color: #fff; /* Texto blanco */
-            border: 1px solid #555; /* Borde gris oscuro */
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #555;
         }
         button {
             padding: 10px 20px;
-            background-color: #fa0505;
-            color: rgb(245, 244, 245);
+            background-color: #ff0000;
+            color: white;
             border: none;
             cursor: pointer;
             width: 100%;
         }
         button:hover {
-            background-color: #f70000;
+            background-color: #ff0000;
         }
         h2, h3 {
             text-align: center;
@@ -85,30 +85,8 @@
     <p>Desarrollado por Carvajal JJ</p>
 </div>
 
-<script>
-    function polarToCartesian() {
-        let r = parseFloat(document.getElementById('r').value);
-        let theta = parseFloat(document.getElementById('theta').value);
-        
-        let thetaRad = theta * Math.PI / 180; // Convertir grados a radianes
-        let x = r * Math.cos(thetaRad);
-        let y = r * Math.sin(thetaRad);
-        
-        document.getElementById('cartesian-result').innerText = 
-            `Coordenadas Cartesianas: x = ${x.toFixed(2)}, y = ${y.toFixed(2)}`;
-    }
-
-    function cartesianToPolar() {
-        let x = parseFloat(document.getElementById('x').value);
-        let y = parseFloat(document.getElementById('y').value);
-        
-        let r = Math.sqrt(x*x + y*y);
-        let theta = Math.atan2(y, x) * 180 / Math.PI; // Convertir radianes a grados
-        
-        document.getElementById('polar-result').innerText = 
-            `Coordenadas Polares: r = ${r.toFixed(2)}, θ = ${theta.toFixed(2)}°`;
-    }
-</script>
+<!-- Enlazar el archivo JavaScript externo -->
+<script src="coordenadas.js"></script>
 
 </body>
 </html>
